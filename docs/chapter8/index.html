@@ -245,23 +245,6 @@
   
 
       
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../browser-access/" class="md-tabs__link">
-        
-  
-    
-  
-  公開ポートへのアクセス方法
-
-      </a>
-    </li>
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -551,56 +534,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#82-podmankubernetes-yaml" class="md-nav__link">
-    8.2 PodmanでKubernetes YAMLファイルを生成する
+  <a href="#podmankubernetes-yaml" class="md-nav__link">
+    PodmanでKubernetes YAMLファイルを生成する
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#83-kubernetes-yamlpodmanpod" class="md-nav__link">
-    8.3 Kubernetes YAMLからPodmanのPodとコンテナを作成する
+  <a href="#kubernetes-yamlpodmanpod" class="md-nav__link">
+    Kubernetes YAMLからPodmanのPodとコンテナを作成する
   </a>
   
-    <nav class="md-nav" aria-label="8.3 Kubernetes YAMLからPodmanのPodとコンテナを作成する">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kubernetes-yamlpod" class="md-nav__link">
     Kubernetes YAMLファイルに基づいてPodとコンテナをシャットダウンする
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#podmankuberentes-yaml" class="md-nav__link">
     PodmanとKuberentes YAMLファイルを使用してイメージをビルドする
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#84-podman" class="md-nav__link">
-    8.4 コンテナ内でPodmanを動かす
-  </a>
-  
-    <nav class="md-nav" aria-label="8.4 コンテナ内でPodmanを動かす">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#podmanpodman" class="md-nav__link">
     Podmanコンテナ内でPodmanを実行する
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -720,25 +684,6 @@
   
 
     
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../browser-access/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    公開ポートへのアクセス方法
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -766,56 +711,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#82-podmankubernetes-yaml" class="md-nav__link">
-    8.2 PodmanでKubernetes YAMLファイルを生成する
+  <a href="#podmankubernetes-yaml" class="md-nav__link">
+    PodmanでKubernetes YAMLファイルを生成する
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#83-kubernetes-yamlpodmanpod" class="md-nav__link">
-    8.3 Kubernetes YAMLからPodmanのPodとコンテナを作成する
+  <a href="#kubernetes-yamlpodmanpod" class="md-nav__link">
+    Kubernetes YAMLからPodmanのPodとコンテナを作成する
   </a>
   
-    <nav class="md-nav" aria-label="8.3 Kubernetes YAMLからPodmanのPodとコンテナを作成する">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kubernetes-yamlpod" class="md-nav__link">
     Kubernetes YAMLファイルに基づいてPodとコンテナをシャットダウンする
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#podmankuberentes-yaml" class="md-nav__link">
     PodmanとKuberentes YAMLファイルを使用してイメージをビルドする
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#84-podman" class="md-nav__link">
-    8.4 コンテナ内でPodmanを動かす
-  </a>
-  
-    <nav class="md-nav" aria-label="8.4 コンテナ内でPodmanを動かす">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#podmanpodman" class="md-nav__link">
     Podmanコンテナ内でPodmanを実行する
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -840,72 +766,16 @@
 <li>見込み時間:15分</li>
 <li>コンテンツ</li>
 </ul>
-<h2 id="82-podmankubernetes-yaml">8.2 PodmanでKubernetes YAMLファイルを生成する</h2>
+<h2 id="podmankubernetes-yaml">PodmanでKubernetes YAMLファイルを生成する</h2>
 <p>(このコンテンツはChapter 8.2に該当します)</p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ podman rm -f --ignore myapp
-$ podman create -p 8080:8080 --name myapp quay.io/rhatdan/myimage
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ podman kube generate myapp &gt; myapp.yaml
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ podman image inspect quay.io/rhatdan/myimage | jq .[].User
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ podman kube generate --type deployment --replicas 2 myapp
-</code></pre></div></p>
-<h2 id="83-kubernetes-yamlpodmanpod">8.3 Kubernetes YAMLからPodmanのPodとコンテナを作成する</h2>
+<h2 id="kubernetes-yamlpodmanpod">Kubernetes YAMLからPodmanのPodとコンテナを作成する</h2>
 <p>(このコンテンツはChapter 8.3に該当します)</p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ podman rm -f --ignore myapp
-$ podman kube play myapp.yaml
-</code></pre></div></p>
-<h3 id="kubernetes-yamlpod">Kubernetes YAMLファイルに基づいてPodとコンテナをシャットダウンする</h3>
+<h2 id="kubernetes-yamlpod">Kubernetes YAMLファイルに基づいてPodとコンテナをシャットダウンする</h2>
 <p>(このコンテンツはChapter 8.3.1に該当します)</p>
-<div class="highlight"><pre><span></span><code>$ podman kube down myapp.yaml
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>$ podman pod ps
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>$ podman kube play myapp.yaml
-</code></pre></div>
-<h3 id="podmankuberentes-yaml">PodmanとKuberentes YAMLファイルを使用してイメージをビルドする</h3>
+<h2 id="podmankuberentes-yaml">PodmanとKuberentes YAMLファイルを使用してイメージをビルドする</h2>
 <p>(このコンテンツはChapter 8.3.2に該当します)</p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ cat &gt; ./Containerfile &lt;&lt; _EOF
-FROM ubi8-init
-RUN dnf -y install httpd; dnf -y clean all
-RUN systemctl enable httpd.service
-_EOF
-$ podman pod rm --all --force
-$ podman rm --all --force
-$ podman build -t mysystemd .
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ podman create --rm -p 8080:80 --name myapp -v ./html:/var/www/html:Z mysystemd
-$ podman kube generate myapp &gt; myapp2.yaml
-$ cat myapp2.yaml
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ podman pod rm --all --force
-$ podman rm --all --force
-$ podman rmi mysystemd
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ mkdir mysystemd
-$ mv Containerfile mysystemd/
-$ podman kube play --build myapp2.yaml
-</code></pre></div></p>
-<h2 id="84-podman">8.4 コンテナ内でPodmanを動かす</h2>
-<h3 id="podmanpodman">Podmanコンテナ内でPodmanを実行する</h3>
+<h2 id="podmanpodman">Podmanコンテナ内でPodmanを実行する</h2>
 <p>(このコンテンツはChapter 8.4.1に該当します)</p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ podman run --privileged quay.io/podman/stable podman version
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ podman run --user podman quay.io/podman/stable podman version
-$ podman run --cap-drop=all --cap-add CAP_SETUID,CAP_SETGID --user podman quay.io/podman/stable podman version
-</code></pre></div></p>
 
 
 

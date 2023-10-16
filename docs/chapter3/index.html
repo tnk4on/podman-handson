@@ -245,23 +245,6 @@
   
 
       
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../browser-access/" class="md-tabs__link">
-        
-  
-    
-  
-  公開ポートへのアクセス方法
-
-      </a>
-    </li>
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -458,56 +441,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#31" class="md-nav__link">
-    3.1 コンテナでのボリュームの使用
-  </a>
-  
-    <nav class="md-nav" aria-label="3.1 コンテナでのボリュームの使用">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     コンテナでのボリュームの使用
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     名前付きボリューム
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     ボリュームのマウントオプション
   </a>
   
-    <nav class="md-nav" aria-label="ボリュームのマウントオプション">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#u" class="md-nav__link">
-    U ボリュームオプション
-  </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#podman-run-mount" class="md-nav__link">
     podman run --mountコマンドオプション
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -727,25 +684,6 @@
   
 
     
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../browser-access/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    公開ポートへのアクセス方法
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -780,56 +718,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#31" class="md-nav__link">
-    3.1 コンテナでのボリュームの使用
-  </a>
-  
-    <nav class="md-nav" aria-label="3.1 コンテナでのボリュームの使用">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     コンテナでのボリュームの使用
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     名前付きボリューム
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     ボリュームのマウントオプション
   </a>
   
-    <nav class="md-nav" aria-label="ボリュームのマウントオプション">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#u" class="md-nav__link">
-    U ボリュームオプション
-  </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#podman-run-mount" class="md-nav__link">
     podman run --mountコマンドオプション
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -868,9 +780,8 @@ $
 </code></pre></div>
 </details>
 <hr />
-<h2 id="31">3.1 コンテナでのボリュームの使用</h2>
-<h3 id="_2">コンテナでのボリュームの使用</h3>
-<p>(このコンテンツは本書 3.1に該当します)</p>
+<h2 id="_2">コンテナでのボリュームの使用</h2>
+<p>(このコンテンツはChapter 3.1に該当します)</p>
 <p>htmlディレクトリを作成し、その中にindex.htmlファイルを作成します
 <div class="highlight"><pre><span></span><code>$ mkdir html
 $ cat &gt; html/index.html &lt;&lt; _EOF
@@ -878,41 +789,29 @@ $ cat &gt; html/index.html &lt;&lt; _EOF
  &lt;head&gt;
  &lt;/head&gt;
  &lt;body&gt;
-  &lt;h1&gt;Goodbye World&lt;/h1&gt;
+ &lt;h1&gt;Goodbye World&lt;/h1&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+_EOF
+</code></pre></div>
+出力結果
+<div class="highlight"><pre><span></span><code>$ mkdir html
+$ cat &gt; html/index.html &lt;&lt; _EOF
+&lt;html&gt;
+ &lt;head&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+ &lt;h1&gt;Goodbye World&lt;/h1&gt;
  &lt;/body&gt;
 &lt;/html&gt;
 _EOF
 </code></pre></div></p>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">mkdir html</span>
-</code></pre></div></p>
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat &gt; html/index.html &lt;&lt; _EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;html&gt;</span>
-<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;head&gt;</span>
-<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;/head&gt;</span>
-<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;body&gt;</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&lt;h1&gt;Goodbye World&lt;/h1&gt;</span>
-<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;/body&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;/html&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">_EOF</span>
-</code></pre></div>
-<div class="admonition">
-<p class="admonition-title">出力結果はありません</p>
-</div>
-<p><code>podman run</code>コマンド実行時に<code>-v</code>オプションを使用することで、ホスト上のコンテンツをコンテナ内にマウントすることができます。</p>
-<p><code>-v ./html:/var/www/html:ro,z</code>オプションを使用してコンテナを起動します</p>
-<div class="admonition info">
-<p class="admonition-title"><code>:ro,z</code>オプションについて</p>
-<p><code>:ro</code>オプションはボリュームをコンテナ内で読み取り専用モードでマウントします。
-<code>:z</code>オプションはSELinuxのラベルを、コンテナが読み書きできるように再ラベル付けします。詳細は本書3.1.2内の<code>SELinux のボリュームオプション</code>を参照ください。</p>
-</div>
+<p><code>-v ./html:/var/www/html</code> を使用してコンテナを起動します
+<code>ro</code>
+<code>z</code>
 <div class="highlight"><pre><span></span><code>$ podman run -d -v ./html:/var/www/html:ro,z -p 8080:8080 quay.io/rhatdan/myimage
 </code></pre></div>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman run -d -v ./html:/var/www/html:ro,z -p 8080:8080 quay.io/rhatdan/myimage</span>
-</code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
+出力結果
 <div class="highlight"><pre><span></span><code>$ podman run -d -v ./html:/var/www/html:ro,z -p 8080:8080 quay.io/rhatdan/myimage
 Trying to pull quay.io/rhatdan/myimage:latest...
 Getting image source signatures
@@ -926,15 +825,8 @@ Writing manifest to image destination
 Storing signatures
 654cf2e2a6382f901b775296691cdf47231efd7da6c1bdb877f00ef9c4d6a654
 </code></pre></div>
-</details>
-<p><code>curl</code>コマンドでアクセスして確認します
-<div class="highlight"><pre><span></span><code>$ curl localhost:8080
-</code></pre></div></p>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">curl localhost:8080</span>
-</code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
+- ブラウザで確認
+- curlで確認
 <div class="highlight"><pre><span></span><code>$ curl localhost:8080
 &lt;html&gt;
  &lt;head&gt;
@@ -943,77 +835,40 @@ Storing signatures
  &lt;h1&gt;Goodbye World&lt;/h1&gt;
  &lt;/body&gt;
 &lt;/html&gt;
-</code></pre></div>
-</details>
-<!--
-- ブラウザで確認
--->
-
-<p><code>podman rm</code>コマンドを使用して実行中のコンテナを削除します。コンテナの削除後もコンテナ内にマウントしたコンテンツは削除されません。</p>
-<div class="admonition info">
-<p class="admonition-title"><code>--latest</code>、<code>--force</code>オプションについて</p>
-<p><code>podman rm</code>コマンドに合わせて<code>--latest</code>、<code>--force</code>オプションを付けることで、少ないコマンドで実行中のコンテナを強制的に削除できます。</p>
-<p><code>--latest</code>または<code>-l</code>はコンテナ名やIDの代わりに最後に作成されたコンテナを使用します。
-<code>--force</code>または<code>-f</code>は実行中または一時停止中のコンテナを強制的に削除します。</p>
-</div>
+</code></pre></div></p>
+<p>コンテナを削除。コンテンツは削除されていない。
 <div class="highlight"><pre><span></span><code>$ podman rm --latest --force
 </code></pre></div>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman rm --latest --force</span>
-</code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
+出力結果
 <div class="highlight"><pre><span></span><code>$ podman rm --latest --force
 654cf2e2a6382f901b775296691cdf47231efd7da6c1bdb877f00ef9c4d6a654
-</code></pre></div>
-</details>
-<div class="admonition question">
-<p class="admonition-title">（オプション問題）</p>
-<p>htmlディレクトリの中を確認し、コンテンツが削除されていないことを確認します</p>
-</div>
-<div class="highlight"><pre><span></span><code>$ ls -l html
-</code></pre></div>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">ls -l html</span>
 </code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
+<p>（オプション）
 <div class="highlight"><pre><span></span><code>$ ls -l html
+$ podman run -d -v ./html:/var/www/html:ro,z -p 8080:8080 quay.io/rhatdan/myimage
 </code></pre></div>
-</details>
-<p>htmlディレクトリを削除します
+コンテンツの確認後、コンテナを削除
+<div class="highlight"><pre><span></span><code>$ podman rm --latest --force
+</code></pre></div></p>
+<p>htmlディレクトリを削除
+<div class="highlight"><pre><span></span><code>$ rm -rf html
+</code></pre></div>
+出力確認
 <div class="highlight"><pre><span></span><code>$ rm -rf html
 </code></pre></div></p>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">rm -rf html</span>
-</code></pre></div></p>
-<div class="admonition">
-<p class="admonition-title">出力結果はありません</p>
-</div>
-<h3 id="_3">名前付きボリューム</h3>
-<p>(このコンテンツは本書 3.1.1に該当します)</p>
-<p>Podmanのコンテナでデータを永続化する別の仕組みとして「名前付きボリューム（または単にボリュームと呼ぶ）」があります。
-名前付きボリュームは<code>podman volume create</code>コマンドで作成できます。名前付きボリュームの実体はホスト上の特定のパス（ローカルコンテナストレージ）にあります。</p>
-<p><code>podman volume create</code>コマンドを使用してボリューム<code>webdata</code>を作成します
+<h2 id="_3">名前付きボリューム</h2>
+<p>(このコンテンツはChapter 3.1.1に該当します)</p>
+<p>名前付きボリューム<code>webdata</code>を作成します
 <div class="highlight"><pre><span></span><code>$ podman volume create webdata
-</code></pre></div></p>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman volume create webdata</span>
-</code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
+</code></pre></div>
+出力確認
 <div class="highlight"><pre><span></span><code>$ podman volume create webdata
 webdata
-</code></pre></div>
-</details>
+</code></pre></div></p>
 <p>ボリュームの情報を確認します
 <div class="highlight"><pre><span></span><code>$ podman volume inspect webdata
-</code></pre></div></p>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman volume inspect webdata</span>
-</code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
+</code></pre></div>
+出力確認
 <div class="highlight"><pre><span></span><code>$ podman volume inspect webdata
 [
      {
@@ -1029,13 +884,8 @@ webdata
           &quot;NeedsChown&quot;: true
      }
 ]
-</code></pre></div>
-</details>
-<p>ボリューム内にコンテンツを格納するために、ローカルコンテナストレージ上のディレクトリにコンテンツを作成します。</p>
-<div class="admonition">
-<p class="admonition-title">ホスト上で名前付きボリュームにコンテンツを作成する</p>
-<p>この例では、<code>/home/rhel/.local/share/containers/storage/volumes/webdata/_data/</code>にコンテンツを作成することで、ボリューム内にコンテンツを作成したことと同等の結果を得られます。</p>
-</div>
+</code></pre></div></p>
+<p>Original
 <div class="highlight"><pre><span></span><code>$ cat &gt; /home/rhel/.local/share/containers/storage/volumes/webdata/_data/index.html &lt;&lt; _EOL
 &lt;html&gt;
  &lt;head&gt;
@@ -1046,278 +896,89 @@ webdata
 &lt;/html&gt;
 _EOL
 </code></pre></div>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat &gt; /home/rhel/.local/share/containers/storage/volumes/webdata/_data/index.html &lt;&lt; _EOL</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;html&gt;</span>
-<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;head&gt;</span>
-<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;/head&gt;</span>
-<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;body&gt;</span>
-<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;h1&gt;Goodbye World&lt;/h1&gt;</span>
-<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;/body&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;/html&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">_EOL</span>
+出力結果
+<div class="highlight"><pre><span></span><code>$ cat &gt; /home/rhel/.local/share/containers/storage/volumes/webdata/_data/index.html &lt;&lt; _EOL
+&lt;html&gt;
+ &lt;head&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+ &lt;h1&gt;Goodbye World&lt;/h1&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+_EOL
 </code></pre></div></p>
-<div class="admonition">
-<p class="admonition-title">出力結果はありません</p>
-</div>
-<p><code>-v</code>オプションでホスト上のコンテンツをコンテナにマウントしたのと同様に、名前付きボリュームをコンテナにマウントすることができます。</p>
-<p><code>-v</code>オプションで名前付きボリューム<code>webdata</code>を使用してコンテナを作成します
+<p>名前付きボリューム<code>webdata</code>を使用してコンテナを作成します
 <div class="highlight"><pre><span></span><code>$ podman run -d -v webdata:/var/www/html:ro,z -p 8080:8080 quay.io/rhatdan/myimage
 </code></pre></div>
-(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman run -d -v webdata:/var/www/html:ro,z -p 8080:8080 quay.io/rhatdan/myimage</span>
-</code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
+出力結果
 <div class="highlight"><pre><span></span><code>$ podman run -d -v webdata:/var/www/html:ro,z -p 8080:8080 quay.io/rhatdan/myimage
 8c1c69967f9cef8a0de312f65cb0e70c0be2e6af3965d299aec75e8f39d6e25a
-</code></pre></div>
-</details>
-<div class="admonition question">
-<p class="admonition-title">（オプション問題）</p>
-<p><code>curl</code>コマンドやブラウザを使ってボリュームに作成したコンテンツ（<code>Goodbye World</code>が表示される）にアクセスできるか確認しましょう</p>
-</div>
-<p><code>podman stop</code>コマンドを使用して実行中のコンテナを一時停止します。</p>
-<p><code>-t 0</code>オプションとコンテナIDを指定してコンテナを停止します。コンテナIDはご自身の環境のものを指定してください。</p>
-<div class="admonition info">
-<p class="admonition-title"><code>-t 0</code>オプションについて</p>
-<p><code>--time</code>または<code>-t</code>オプションは、強制的に停止するまでの待機時間を秒数で指定します。<code>-t 0</code>の場合は即座に停止が実行されます。</p>
-</div>
-<div class="admonition info">
-<p class="admonition-title">コンテナIDについて</p>
-<p>コンテナIDはコンテナ作成時にランダムに割り当てられる64文字のハッシュ値です。このハッシュ値の先頭12文字をコンテナIDとして指定することができます。<code>podman ps</code>コマンドを使用してコンテナIDを確認できます。</p>
-</div>
-<div class="highlight"><pre><span></span><code>$ podman stop -t 0 8c1c69967f9c
-</code></pre></div>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman stop -t 0 8c1c69967f9c</span>
 </code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
+<p>コンテナを停止します。<code>podman ps</code>で調べたCONTAINER_IDをしてしても良いですし、TABキーを押すとNAMESが自動で補完されます。
 <div class="highlight"><pre><span></span><code>$ podman stop -t 0 8c1c69967f9c
-8c1c69967f9c
-</code></pre></div>
-</details>
-<p>作成したボリュームは<code>podman volume rm</code>コマンドを使って削除できます。</p>
-<p><code>--force</code>オプションとボリューム名を指定して強制的にボリュームの削除とコンテナの削除を行います。</p>
-<div class="admonition info">
-<p class="admonition-title"><code>--force</code>オプションの使用について</p>
-<p><code>podman volume rm</code>のみを使用した場合、今回はコンテナがまだ停止状態で残っているためエラーが出て削除ができません。
-<div class="highlight"><pre><span></span><code>Error: volume webdata is being used by the following container(s): e55377526ab98a9a875c244c9f110b70ed82656f8c3e6d6456181ed63594fbd1: volume is being used
-</code></pre></div>
-そのため、ボリュームとコンテナを同時に強制的に削除するために<code>--force</code>オプションを使用します。</p>
-</div>
+または
+$ podman stop -t 0 practical_cerf
+</code></pre></div></p>
+<p><code>podman volume rm</code>コマンドを使用してボリュームの削除を行います。
 <div class="highlight"><pre><span></span><code>$ podman volume rm --force webdata
 </code></pre></div>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman volume rm --force webdata</span>
-</code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
+出力結果
 <div class="highlight"><pre><span></span><code>$ podman volume rm --force webdata
 webdata
-</code></pre></div>
-</details>
+</code></pre></div></p>
 <p><code>podman volume list</code>を実行して、ボリュームが存在しないことを確認します
 <div class="highlight"><pre><span></span><code>$ podman volume list
-</code></pre></div></p>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman volume list</span>
-</code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
+</code></pre></div>
+出力結果
 <div class="highlight"><pre><span></span><code>$ podman volume list
 $
-</code></pre></div>
-</details>
-<div class="admonition question">
-<p class="admonition-title">（オプション問題）</p>
-<p><code>podman ps -a</code>コマンドを使ってコンテナが削除されているか確認しましょう</p>
-</div>
-<p>ボリュームが存在しない状態で<code>podman run</code>を実行できます。その場合、ボリュームは自動的に作成されます。</p>
-<p><code>webdata1</code>ボリュームを指定してコンテナを起動します。そしてボリュームが作成されているか確認します。
+</code></pre></div></p>
+<p>名前付きボリュームが存在しない状態で<code>podman run</code>を実行します。
 <div class="highlight"><pre><span></span><code>$ podman run -d -v webdata1:/var/www/html:ro,z -p 8080:8080 quay.io/rhatdan/myimage
 $ podman volume list
-</code></pre></div></p>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman run -d -v webdata1:/var/www/html:ro,z -p 8080:8080 quay.io/rhatdan/myimage</span>
 </code></pre></div>
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman volume list</span>
-</code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
-<div class="highlight"><pre><span></span><code>$ podman run -d -v webdata1:/var/www/html:ro,z -p 8080:8080 quay.io/rhatdan/myimage
-b2613ca208811ac992a1215cffb9a20b5eb97e0d5cb543aacfe6616fc5bb6e49
-$ podman volume list
-DRIVER      VOLUME NAME
-local       webdata1
-</code></pre></div>
-</details>
-<div class="admonition question">
-<p class="admonition-title">（オプション問題）</p>
-<p><code>curl</code>コマンドやブラウザを使ってコンテンツにアクセスできるか確認しましょう。またその際に表示される内容についても確認しましょう。</p>
-</div>
-<div class="admonition">
-<p class="admonition-title">空のボリュームをマウントした際の挙動</p>
-<p><code>webdata1</code>ボリュームは空なのでコンテナイメージ内の元のindex.htmlは保持された状態になります。
-コンテナイメージは階層構造を持ち、PodmanはLinuxカーネルのoverlayfs機能を使いイメージが重ね合わされた結果のファイルシステムを実行します。
-今回のようにボリュームが空で同名のファイルが存在しない場合は元のデータは上書きされません。</p>
-</div>
-<p>ボリュームを強制的に削除します。また同時にコンテナも削除します。
+（オプション）<code>webdata1</code>は空なので、元のindex.htmlは保持された状態になります。
+ボリュームは階層構造を持つので、同名のファイルが存在しない場合はデータは上書きされません。</p>
+<p>ボリュームを強制的に削除します。同時にコンテナも停止します。
 <div class="highlight"><pre><span></span><code>$ podman volume rm --force webdata1
-</code></pre></div></p>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman volume rm --force webdata1</span>
-</code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
+</code></pre></div>
+出力結果
 <div class="highlight"><pre><span></span><code>$ podman volume rm --force webdata1
 webdata1
 </code></pre></div>
-</details>
-<div class="admonition question">
-<p class="admonition-title">（オプション問題）</p>
-<p><code>podman volume list</code>、<code>podman ps</code>コマンドを使ってコンテナが削除されているか確認しましょう</p>
-</div>
-<h3 id="_4">ボリュームのマウントオプション</h3>
-<p>(このコンテンツは本書 3.1.2に該当します)</p>
-<p>これまでにボリュームマウント時に使用した<code>:ro</code>や<code>:z</code>オプション以外にもPodmanでは便利なオプションがあります。</p>
-<h4 id="u">U ボリュームオプション</h4>
-<p><code>:U</code>オプションはその一つです。ルートレスコンテナにおける所有権の問題を簡単に解決できるオプションです。ルートレスコンテナで、コンテナ内のプロセスが<code>UID==60</code>として実行する例を考えてみましょう。</p>
-<p>ルートレスコンテナにおけるユーザー名前空間マッピングを確認します。
+（オプション）
+<div class="highlight"><pre><span></span><code>$ podman volume list
+$ podman ps
+</code></pre></div></p>
+<h2 id="_4">ボリュームのマウントオプション</h2>
+<p>(このコンテンツはChapter 3.1.2に該当します)</p>
+<p>ルートレスコンテナにおけるユーザー名前空間マッピングを確認します
 <div class="highlight"><pre><span></span><code>$ podman unshare cat /proc/self/uid_map
-</code></pre></div></p>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman unshare cat /proc/self/uid_map</span>
-</code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
+</code></pre></div>
+出力結果
 <div class="highlight"><pre><span></span><code>$ podman unshare cat /proc/self/uid_map
          0       1002          1
          1     231072      65536
 </code></pre></div>
-</details>
-<p>この結果は下記を表します</p>
-<ul>
-<li>コンテナ内の<code>UID 0</code>はホスト上の<code>UID 1002</code>にマップされます。</li>
-<li><code>UID 1</code>は<code>UID 231072</code>、<code>UID 2</code>は<code>UID 231073</code> ... <code>UID 65536</code>は<code>UID 296607</code>とマップされます。</li>
-</ul>
-<p>コンテナ内で<code>UID 60</code>として実行するプロセスがボリュームに書き込む場合、ホスト上のユーザーの所有権と異なるため書き込みができません。
-ユーザー名前空間内でボリュームの所有権を<code>UID 60</code>にするために、<code>podman unshare</code>を使用して<code>chown</code>を実行します。</p>
-<div class="admonition info">
-<p class="admonition-title"><code>podman unshare</code>コマンドについて</p>
-<p><code>podman unshare</code>コマンドはコンテナを実行せずにユーザー名前空間内に入ることができます。このコマンドはPodmanの独自のコマンドでDockerにはありません。</p>
-</div>
+- コンテナ内の<code>UID 0</code>はホスト上の<code>UID 1002</code>にマップされます。
+- <code>UID 1</code>は<code>UID 231072</code>、<code>UID 2</code>は<code>UID 231073</code> ... <code>UID 65536</code>は<code>UID 296607</code>とマップされます。</p>
+<p>Apache Webサーバー(httpd)のプロセスはコンテナ内では<code>UID 60</code>として実行されます。
+ユーザー名前空間内でボリュームの所有権を<code>UID 60</code>にするために、<code>podman unshare</code>を使用して<code>chown</code>を実行します。
 <div class="highlight"><pre><span></span><code>$ podman unshare chown 60:60 ./html
 </code></pre></div>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman unshare chown 60:60 ./html</span>
-</code></pre></div></p>
-<div class="admonition">
-<p class="admonition-title">出力結果はありません</p>
-</div>
-<div class="admonition question">
-<p class="admonition-title">（オプション問題）</p>
-<p><code>ls -ld</code>コマンドでhtmlディレクトリの所有権がどのようになったか確認してみましょう
-<div class="highlight"><pre><span></span><code>$ ls -ld
-drwxr-xr-x. 2 231131 231131 6 Oct 14 14:58 html
-</code></pre></div></p>
-</div>
-<p>コンテナイメージによってはコンテナ内で実行するプロセスが特定のUIDを指定しているものがあります。mariadbコンテナイメージはその一つで、データベースのプロセスはmysqlユーザ（UID==999）によって実行されます。</p>
-<p>mariadbコンテナイメージのmysqlユーザーのUIDを確認します。</p>
+- コンテナ内のhttpdのプロセスがファイルを書き込む場合に必要</p>
 <div class="highlight"><pre><span></span><code>$ podman run docker.io/mariadb grep mysql /etc/passwd
 </code></pre></div>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman run docker.io/mariadb grep mysql /etc/passwd</span>
-</code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
-<div class="highlight"><pre><span></span><code>$ podman run docker.io/mariadb grep mysql /etc/passwd
-Trying to pull docker.io/library/mariadb:latest...
-Getting image source signatures
-Copying blob 50ee0c078c93 done  
-Copying blob 43f89b94cd7d done  
-Copying blob dfb413a01c7e done  
-Copying blob 1d3f76b535d3 done  
-Copying blob f7efd05ec01e done  
-Copying blob fe2ff83c75df done  
-Copying blob 6975e72928bb done  
-Copying blob 561d1b426cbd done  
-Copying config f35870862d done  
-Writing manifest to image destination
-Storing signatures
-mysql:x:999:999::/home/mysql:/bin/sh
-</code></pre></div>
-</details>
-<div class="admonition info">
-<p class="admonition-title"><code>:U</code>オプションについて</p>
-<p>コンテナイメージによってはコンテナ内で実行するプロセスが特定のUIDを指定しているものがあります。</p>
-</div>
-<p>データベース用のディレクトリを作成します。ディレクトリの所有権がホスト上のユーザー（rhel）であることを確認します。
+<p>Original
 <div class="highlight"><pre><span></span><code>$ mkdir mariadb
 $ ls -ld mariadb/
+$ podman run --user mysql -v ./mariadb:/var/lib/mariadb:U docker.io/mariadb ls -ld /var/lib/
+$ podman run --security-opt label=disable -v /home/dwalsh:/home/dwalsh -p 8080:8080 quay.io/rhatdan/myimage
 </code></pre></div></p>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">mkdir mariadb</span>
+<h2 id="podman-run-mount">podman run --mountコマンドオプション</h2>
+<p>(このコンテンツはChapter 3.1.3に該当します)</p>
+<div class="highlight"><pre><span></span><code>$ man  
 </code></pre></div>
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">ls -ld mariadb/</span>
-</code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
-<div class="highlight"><pre><span></span><code>$ mkdir mariadb
-$ ls -ld mariadb/
-drwxr-xr-x. 2 rhel rhel 6 Oct 14 15:25 mariadb/
-</code></pre></div>
-</details>
-<p>mariadbコンテナイメージを実行します。</p>
-<p><code>:U</code>オプションを使用し<code>mariadb</code>ディレクトリをコンテナ内の<code>/var/lib/mariadb</code>ディレクトリにマウントします。また<code>--user mysql</code>オプションを使用し、コンテナの実行ユーザーを<code>mysql</code>と指定します。
-<div class="highlight"><pre><span></span><code>$ podman run --user mysql -v ./mariadb:/var/lib/mariadb:U docker.io/mariadb ls -ld /var/lib/mariadb
-</code></pre></div></p>
-<p>(コピペ用)
-<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman run --user mysql -v ./mariadb:/var/lib/mariadb:U docker.io/mariadb ls -ld /var/lib/mariadb</span>
-</code></pre></div></p>
-<details class="success">
-<summary>出力結果</summary>
-<div class="highlight"><pre><span></span><code>$ podman run --user mysql -v ./mariadb:/var/lib/mariadb:U docker.io/mariadb ls -ld /var/lib/mariadb
-drwxr-xr-x. 2 mysql mysql 6 Oct 14 15:25 /var/lib/mariadb
-</code></pre></div>
-</details>
-<!-- 
-#### SELinux のボリュームオプション
-<div class="highlight"><pre><span></span><code>$ podman run --security-opt label=disable -v /home/rhel:/home/rhel -p 8080:8080 quay.io/rhatdan/myimage
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code>podman run --security-opt label=disable -v /home/rhel:/home/rhel -p 8080:8080 quay.io/rhatdan/myimage
-</code></pre></div>
-
-/// details | 出力結果
-    type: success
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
-///
--->
-
-<h3 id="podman-run-mount">podman run --mountコマンドオプション</h3>
-<p>(このコンテンツは本書 3.1.3に該当します)</p>
-<div class="admonition question">
-<p class="admonition-title">（オプション）<code>podman run --mount</code>コマンドでサポートされているマウントタイプや<code>podman volume</code>のサブコマンドの詳細はマニュアルページを参照してください</p>
-<div class="highlight"><pre><span></span><code>$ man podman-mount
-$ podman-volume-create
-$ podman-volume-exists
-$ podman-volume-export
-$ podman-volume-import
-$ podman-volume-inspect
-$ podman-volume-list
-$ podman-volume-prune
-$ podman-volume-rm
-</code></pre></div>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">まとめ</p>
-<p>バインドマウントや名前付きボリュームを使用することで永続化したデータをコンテナで使用することができます。
-ボリュームはホスト上のファイルシステムをコンテナ内にマウントするために、SELinuxやユーザー名前空間のセキュリティ上の問題に対処する必要があります。
-Podmanではそのための便利なボリュームマウントオプションがあります。</p>
-</div>
 
 
 

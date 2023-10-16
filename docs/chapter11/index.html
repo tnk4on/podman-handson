@@ -245,23 +245,6 @@
   
 
       
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../browser-access/" class="md-tabs__link">
-        
-  
-    
-  
-  公開ポートへのアクセス方法
-
-      </a>
-    </li>
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -611,76 +594,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#111-forkexec" class="md-nav__link">
-    11.1 デーモンとfork/execモデルとの比較
-  </a>
-  
-    <nav class="md-nav" aria-label="11.1 デーモンとfork/execモデルとの比較">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#dockersock" class="md-nav__link">
     docker.sockへのアクセス
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    監査とロギング
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#112-podman" class="md-nav__link">
-    11.2 Podmanによる機密情報の取り扱い
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#113-podman" class="md-nav__link">
-    11.3 Podmanによるイメージの信頼
-  </a>
-  
-    <nav class="md-nav" aria-label="11.3 Podmanによるイメージの信頼">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#podman" class="md-nav__link">
-    Podmanによるイメージの署名
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#114-podman" class="md-nav__link">
-    11.4 Podmanによるイメージスキャン
-  </a>
-  
-    <nav class="md-nav" aria-label="11.4 Podmanによるイメージスキャン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    読み取り専用コンテナ
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -740,25 +656,6 @@
   
 
     
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../browser-access/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    公開ポートへのアクセス方法
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -786,76 +683,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#111-forkexec" class="md-nav__link">
-    11.1 デーモンとfork/execモデルとの比較
-  </a>
-  
-    <nav class="md-nav" aria-label="11.1 デーモンとfork/execモデルとの比較">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#dockersock" class="md-nav__link">
     docker.sockへのアクセス
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    監査とロギング
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#112-podman" class="md-nav__link">
-    11.2 Podmanによる機密情報の取り扱い
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#113-podman" class="md-nav__link">
-    11.3 Podmanによるイメージの信頼
-  </a>
-  
-    <nav class="md-nav" aria-label="11.3 Podmanによるイメージの信頼">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#podman" class="md-nav__link">
-    Podmanによるイメージの署名
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#114-podman" class="md-nav__link">
-    11.4 Podmanによるイメージスキャン
-  </a>
-  
-    <nav class="md-nav" aria-label="11.4 Podmanによるイメージスキャン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    読み取り専用コンテナ
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -880,120 +710,14 @@
 <li>見込み時間:15分</li>
 <li>コンテンツ</li>
 </ul>
-<h2 id="111-forkexec">11.1 デーモンとfork/execモデルとの比較</h2>
-<h3 id="dockersock">docker.sockへのアクセス</h3>
-<p>(このコンテンツは本書 11.1.1に該当します)</p>
-<p>Original
-<div class="highlight"><pre><span></span><code># ls -l /run/docker.sock
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ docker run registry.access.redhat.com/ubi8-micro echo hi
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ docker run -ti --name hack -v /:/host --privileged registry.access.redhat.com/ubi8-micro chroot /host
-# cat /etc/shadow
-$ docker rm hack
-</code></pre></div></p>
-<h3 id="_1">監査とロギング</h3>
-<p>(このコンテンツは本書 11.1.2に該当します)</p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ cat /proc/self/loginuid
-$ sudo cat /proc/self/loginuid
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ podman run -d ubi8-micro sleep 20
-$ podman inspect -l --format &#39;{{ .State.Pid }}&#39;
-$ cat /proc/119394/loginuid
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ docker run -d registry.access.redhat.com/ubi8-micro sleep 20
-$ docker inspect df2302cf8c6 --format &#39;{{ .State.Pid }}&#39;
-$ cat /proc/120022/loginuid
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code># auditctl -w /etc/passwd -p wa -k passwd
-# docker run --privileged -v /:/host registry.access.redhat.com/ubi8-micro:latest touch /host/etc/passwd
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code># podman run --privileged -v /:/host registry.access.redhat.com/ubi8-micro:latest touch /host/etc/passwd
-# ausearch -k passwd -i
-</code></pre></div></p>
-<h2 id="112-podman">11.2 Podmanによる機密情報の取り扱い</h2>
-<p>(このコンテンツは本書 11.2に該当します)</p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ echo &quot;This is my secret&quot; &gt; /tmp/secret
-$ podman secret create my_secret /tmp/secret
-$ podman run --rm --secret my_secret ubi8 cat /run/secrets/my_secret
-$ podman run --secret my_secret,type=env --name secret_ctr ubi8 bash -c &#39;echo $my_secret&#39;
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ podman commit secret_ctr secret_img
-$ podman image inspect secret_img --format &#39;{{ .Config.Env }}&#39;
-</code></pre></div></p>
-<h2 id="113-podman">11.3 Podmanによるイメージの信頼</h2>
-<p>(このコンテンツは本書 11.3に該当します)</p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ sudo cp /etc/containers/policy.json /tmp
-$ sudo podman image trust set -t reject docker.io
-$ podman pull alpine
-$ sudo podman image trust set -t accept docker.io/library
-$ podman pull alpine
-$ podman pull bitnami/nginx
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ cat /etc/containers/policy.json
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ podman image trust show
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ sudo podman image trust set --type=reject default
-$ podman image trust show
-$ sudo cp /tmp/policy.json /etc/containers/policy.json
-</code></pre></div></p>
-<h3 id="podman">Podmanによるイメージの署名</h3>
-<p>(このコンテンツは本書 11.3.1に該当します)</p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ gpg --batch --passphrase &#39;&#39; --quick-gen-key dwalsh@redhat.com default default
-$ sudo cp /etc/containers/registries.d/default.yaml /etc/containers/policy.json /tmp
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ sudo podman pull quay.io/rhatdan/myimage
-$ podman login quay.io/rhatdan
-$ sudo -E GNUPGHOME=$HOME/.gnupg \
-podman push --tls-verify=false --sign-by dwalsh@redhat.com quay.io/rhatdan/myimage
-$ sudo ls /var/lib/containers/sigstore/rhatdan/
-</code></pre></div></p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ echo &quot; sigstore: http://localhost:8000&quot; | sudo tee --append /etc/containers/registries.d/default.yaml
-$ cd /var/lib/containers/sigstore &amp;&amp; python3 -m http.server
-
-$ podman rmi quay.io/rhatdan/myimage
-$ sudo podman image trust set -f /tmp/publickey.gpg quay.io/rhatdan
-$ gpg --output /tmp/publickey.gpg --armor --export dwalsh@redhat.com
-$ podman pull quay.io/rhatdan/myimage
-$ podman pull quay.io/rhatdan/podman
-$ sudo cp /tmp/default.yaml /etc/containers/registries.d/default.yaml
-$ sudo cp /tmp/policy.json /etc/containers/policy.json
-</code></pre></div></p>
-<h2 id="114-podman">11.4 Podmanによるイメージスキャン</h2>
-<p>(このコンテンツは本書 11.4に該当します)</p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ podman image mount ubi8
-$ podman unshare
-# podman image mount
-# mnt=$(podman image mount ubi8)
-# echo $mnt
-# cd $mnt
-# /usr/bin/find . -user root -perm -4000
-</code></pre></div></p>
-<h3 id="_2">読み取り専用コンテナ</h3>
-<p>(このコンテンツは本書 11.4.1に該当します)</p>
-<p>Original
-<div class="highlight"><pre><span></span><code>$ podman run --read-only ubi8 touch /foo
-$ podman run --read-only ubi8 touch /run/foo
-$ podman run --read-only-tmpfs=false --read-only ubi8 touch /run/foo
-</code></pre></div></p>
+<h2 id="dockersock">docker.sockへのアクセス</h2>
+<p>(このコンテンツはChapter 11.1.1に該当します)</p>
+<p>(このコンテンツはChapter 11.1.2に該当します)</p>
+<p>(このコンテンツはChapter 11.2に該当します)</p>
+<p>(このコンテンツはChapter 11.3に該当します)</p>
+<p>(このコンテンツはChapter 11.3.1に該当します)</p>
+<p>(このコンテンツはChapter 11.4に該当します)</p>
+<p>(このコンテンツはChapter 11.4.1に該当します)</p>
 
 
 
