@@ -1,0 +1,2300 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../getting-started/">
+      
+      
+        <link rel="next" href="../chapter3/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.2">
+    
+    
+      
+        <title>Chapter 2 - Podmanハンズオン</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.d451bc0e.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a5377069.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,300i,400,400i,700,700i%7CInconsolata:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans JP";--md-code-font:"Inconsolata"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Podmanハンズオン" class="md-header__button md-logo" aria-label="Podmanハンズオン" data-md-component="logo">
+      
+  <img src="../podman.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Podmanハンズオン
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../getting-started/" class="md-tabs__link">
+        
+  
+    
+  
+  開始方法
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  ハンズオンコンテンツ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../browser-access/" class="md-tabs__link">
+        
+  
+    
+  
+  公開ポートへのアクセス方法
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Podmanハンズオン" class="md-nav__button md-logo" aria-label="Podmanハンズオン" data-md-component="logo">
+      
+  <img src="../podman.png" alt="logo">
+
+    </a>
+    Podmanハンズオン
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    開始方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ハンズオンコンテンツ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            ハンズオンコンテンツ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter 2
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    事前作業
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 コンテナの操作
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 コンテナの操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    コンテナの探索
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    コンテナ化したアプリケーションの実行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    コンテナの停止
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    コンテナの起動
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    コンテナのリスト表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    コンテナの調査
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    コンテナの削除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    コンテナへの実行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    コンテナからイメージを作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 コンテナイメージの操作
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 コンテナイメージの操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    コンテナとイメージの違い
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    イメージのリスト表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    イメージの調査
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    イメージのプッシュ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podman-login" class="md-nav__link">
+    podman login：コンテナレジストリへのログイン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    イメージのタグ付け
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    イメージの削除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    イメージのプル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    イメージの検索
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    イメージのマウント
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3　イメージの構築
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 イメージの構築">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#containerfiledockerfile" class="md-nav__link">
+    ContainerfileまたはDockerfileのフォーマット
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    アプリケーションのビルドの自動化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendixA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix A
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendixB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix B
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../browser-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    公開ポートへのアクセス方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    事前作業
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 コンテナの操作
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 コンテナの操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    コンテナの探索
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    コンテナ化したアプリケーションの実行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    コンテナの停止
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    コンテナの起動
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    コンテナのリスト表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    コンテナの調査
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    コンテナの削除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    コンテナへの実行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    コンテナからイメージを作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 コンテナイメージの操作
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 コンテナイメージの操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    コンテナとイメージの違い
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    イメージのリスト表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    イメージの調査
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    イメージのプッシュ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podman-login" class="md-nav__link">
+    podman login：コンテナレジストリへのログイン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    イメージのタグ付け
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    イメージの削除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    イメージのプル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    イメージの検索
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    イメージのマウント
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3　イメージの構築
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 イメージの構築">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#containerfiledockerfile" class="md-nav__link">
+    ContainerfileまたはDockerfileのフォーマット
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    アプリケーションのビルドの自動化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="chapter-2">Chapter 2　コマンドライン</h1>
+<ul>
+<li>レベル:初級</li>
+<li>見込み時間:30分</li>
+<li>コンテンツ概要<ul>
+<li>コンテナの操作</li>
+<li>コンテナイメージの操作</li>
+<li>イメージの構築</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="_1">事前作業</h2>
+<div class="highlight"><span class="filename">一般ユーザー(ユーザー名 rhel)にスイッチする</span><pre><span></span><code># su - rhel
+</code></pre></div>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">su - rhel</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code># su - rhel
+$
+</code></pre></div>
+</details>
+<hr />
+<h2 id="21">2.1 コンテナの操作</h2>
+<h3 id="_2">コンテナの探索</h3>
+<p>(このコンテンツは本書 2.1.1に該当します)</p>
+<p><code>podman run</code>コマンドを実行し、<code>ubi8/httpd-24</code> イメージをプルして実行します
+<div class="highlight"><pre><span></span><code>$ podman run -ti --rm registry.access.redhat.com/ubi8/httpd-24 bash
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman run -ti --rm registry.access.redhat.com/ubi8/httpd-24 bash</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman run -ti --rm registry.access.redhat.com/ubi8/httpd-24 bash
+Trying to pull registry.access.redhat.com/ubi8/httpd-24:latest...
+Getting image source signatures
+Checking if image destination supports signatures
+Copying blob 9ece777c9660 done  
+Copying blob 70de3d8fc2c6 done  
+Copying blob b653248f5bcb done  
+Copying config c4127096ce done  
+Writing manifest to image destination
+Storing signatures
+bash-4.4$ 
+</code></pre></div>
+</details>
+<p>コンテナ内でOSの情報を参照します
+<div class="highlight"><pre><span></span><code>bash-4.4$ grep PRETTY_NAME /etc/os-release
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">grep PRETTY_NAME /etc/os-release</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>bash-4.4$ grep PRETTY_NAME /etc/os-release
+PRETTY_NAME=&quot;Red Hat Enterprise Linux 8.8 (Ootpa)&quot;
+</code></pre></div>
+</details>
+<p>コンテナ内の<code>/usr/bin</code> のカウントを行います
+<div class="highlight"><pre><span></span><code>bash-4.4$ ls /usr/bin/ | wc -l
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">ls /usr/bin/ | wc -l</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>bash-4.4$ ls /usr/bin/ | wc -l
+526
+</code></pre></div>
+</details>
+<p>ホストOS上で同じように実行してみます。<code>exit</code>でコンテナからホストOSに戻り、コマンドを実行します。
+<div class="highlight"><pre><span></span><code>bash-4.4$ exit
+$ grep PRETTY_NAME /etc/os-release
+$ ls /usr/bin/ | wc -l
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">exit</span>
+</code></pre></div></p>
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">grep PRETTY_NAME /etc/os-release</span>
+</code></pre></div>
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">ls /usr/bin/ | wc -l</span>
+</code></pre></div>
+<details class="success">
+<summary>出力結果</summary>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>ラボ環境以外ではホストOSの状態により出力される数字は異なります</p>
+</div>
+<div class="highlight"><pre><span></span><code>bash-4.4$ exit
+exit
+$ grep PRETTY_NAME /etc/os-release
+PRETTY_NAME=&quot;Red Hat Enterprise Linux 9.2 (Plow)&quot;
+$ ls /usr/bin/ | wc -l
+1022
+</code></pre></div>
+</details>
+<h3 id="_3">コンテナ化したアプリケーションの実行</h3>
+<p>(このコンテンツは本書 2.1.2に該当します)</p>
+<p><code>デタッチモード</code>、ポート <code>8080</code>、名前 <code>myapp</code>でコンテナを起動
+<div class="highlight"><pre><span></span><code>$ podman run -d -p 8080:8080 --name myapp registry.access.redhat.com/ubi8/httpd-24
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman run -d -p 8080:8080 --name myapp registry.access.redhat.com/ubi8/httpd-24</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>出力される英数字はコンテナIDで、コンテナ毎に一意のものが出力されます</p>
+</div>
+<div class="highlight"><pre><span></span><code>$ podman run -d -p 8080:8080 --name myapp registry.access.redhat.com/ubi8/httpd-24
+e5558cfdda7d1c2c49c4d5ae59bbfcece64cb219b848ba78ae6cbba787ee8d07
+</code></pre></div>
+</details>
+<p><code>myapp</code>コンテナのポートの使用状況を確認します
+<div class="highlight"><pre><span></span><code>$ podman port myapp
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman port myapp</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman port myapp
+8080/tcp -&gt; 0.0.0.0:8080
+</code></pre></div>
+</details>
+<p><code>デタッチモード</code>、ポート <code>8081</code>、名前 <code>myapp1</code>でコンテナを起動
+<div class="highlight"><pre><span></span><code>$ podman run -d -p 8081:8080 --name myapp1 registry.access.redhat.com/ubi8/httpd-24
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman run -d -p 8081:8080 --name myapp1 registry.access.redhat.com/ubi8/httpd-24</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman run -d -p 8081:8080 --name myapp1 registry.access.redhat.com/ubi8/httpd-24
+f6218c8fd423b6ed913fee1d8d612972e3fc4d0cf737a44e058f0fff0f68aeeb
+</code></pre></div>
+</details>
+<div class="admonition question">
+<p class="admonition-title">（オプション問題）</p>
+<p>コンテナのポートの使用状況を確認する</p>
+</div>
+<p>起動中の全てのコンテナのポートの使用状況を確認してみましょう
+<div class="highlight"><pre><span></span><code>$ podman port --all 
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman port --all</span><span class="w"> </span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman port --all 
+e5558cfdda7d    8080/tcp -&gt; 0.0.0.0:8080
+f6218c8fd423    8080/tcp -&gt; 0.0.0.0:8081
+</code></pre></div>
+<p><code>podman port</code>の出力内容は、<code>コンテナID</code>、<code>コンテナ自身のポート番号</code>/<code>プロトコル</code>、<code>ホストのIPアドレス</code>:<code>ホスト上のポート番号</code>、の順に表示されます。</p>
+</details>
+<h3 id="_4">コンテナの停止</h3>
+<p>(このコンテンツは本書 2.1.3に該当します)</p>
+<p><code>myapp</code>コンテナを停止します
+<div class="highlight"><pre><span></span><code>$ podman stop myapp
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman stop myapp</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman stop myapp
+myapp
+</code></pre></div>
+</details>
+<p><code>myapp1</code>コンテナを停止します
+<div class="highlight"><pre><span></span><code>$ podman stop -t 0 myapp1
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman stop -t 0 myapp1</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman stop -t 0 myapp1
+myapp1
+</code></pre></div>
+</details>
+<h3 id="_5">コンテナの起動</h3>
+<p>(このコンテンツは本書 2.1.4に該当します)</p>
+<p>停止したコンテナを再度起動します。<code>myapp</code>コンテナを起動します。
+<div class="highlight"><pre><span></span><code>$ podman start myapp
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman start myapp</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman start myapp
+myapp
+</code></pre></div>
+</details>
+<h3 id="_6">コンテナのリスト表示</h3>
+<p>(このコンテンツは本書 2.1.5に該当します)</p>
+<p>起動中のコンテナを確認します
+<div class="highlight"><pre><span></span><code>$ podman ps
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman ps</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman ps
+CONTAINER ID  IMAGE                                            COMMAND               CREATED        STATUS         PORTS                   NAMES
+e5558cfdda7d  registry.access.redhat.com/ubi8/httpd-24:latest  /usr/bin/run-http...  9 minutes ago  Up 23 seconds  0.0.0.0:8080-&gt;8080/tcp  myapp
+</code></pre></div>
+</details>
+<p>停止しているコンテナを含め、すべてのコンテナを表示します
+<div class="highlight"><pre><span></span><code>$ podman ps --all
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman ps --all</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman ps --all
+CONTAINER ID  IMAGE                                            COMMAND               CREATED         STATUS                      PORTS                   NAMES
+e5558cfdda7d  registry.access.redhat.com/ubi8/httpd-24:latest  /usr/bin/run-http...  10 minutes ago  Up About a minute           0.0.0.0:8080-&gt;8080/tcp  myapp
+f6218c8fd423  registry.access.redhat.com/ubi8/httpd-24:latest  /usr/bin/run-http...  5 minutes ago   Exited (137) 2 minutes ago  0.0.0.0:8081-&gt;8080/tcp  myapp1
+</code></pre></div>
+</details>
+<h3 id="_7">コンテナの調査</h3>
+<p>(このコンテンツは本書 2.1.6に該当します)</p>
+<p><code>podman inspect</code>コマンドを使い、コンテナを調査します。
+<code>myapp</code>コンテナについて調べてみます。
+<div class="highlight"><pre><span></span><code>$ podman inspect myapp
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman inspect myapp</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman inspect myapp
+[
+     {
+          &quot;Id&quot;: &quot;e5558cfdda7d1c2c49c4d5ae59bbfcece64cb219b848ba78ae6cbba787ee8d07&quot;,
+          &quot;Created&quot;: &quot;2023-09-03T19:58:13.302930658Z&quot;,
+          &quot;Path&quot;: &quot;container-entrypoint&quot;,
+          &quot;Args&quot;: [
+               &quot;/usr/bin/run-httpd&quot;
+          ],
+...
+]
+</code></pre></div>
+</details>
+<h3 id="_8">コンテナの削除</h3>
+<p>(このコンテンツは本書 2.1.7に該当します)</p>
+<p><code>podman rm</code>コマンドを使用し、コンテナを削除します。
+<code>myapp1</code>コンテナを削除します。
+<div class="highlight"><pre><span></span><code>$ podman rm myapp1
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman rm myapp1</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman rm myapp1
+myapp1
+</code></pre></div>
+</details>
+<h3 id="_9">コンテナへの実行</h3>
+<p>(このコンテンツは本書 2.1.8に該当します)</p>
+<p><code>podman exec</code>コマンドを使用して、起動中のコンテナに新たにプロセスを実行できます。また、<code>--interactive (-i)</code>オプションを使用してコンテナ内でコマンドを実行できます。
+<code>myapp</code>コンテナ内にhtmlファイルを作成します
+<div class="highlight"><pre><span></span><code>$ podman exec -i myapp bash -c &#39;cat &gt; /var/www/html/index.html&#39; &lt;&lt; _EOF
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Hello World&lt;/h1&gt;
+        &lt;/body&gt;
+&lt;/html&gt;
+_EOF
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman exec -i myapp bash -c &#39;cat &gt; /var/www/html/index.html&#39; &lt;&lt; _EOF</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;html&gt;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">&lt;head&gt;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">&lt;/head&gt;</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;body&gt;</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">&lt;h1&gt;Hello World&lt;/h1&gt;</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;/body&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;/html&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">_EOF</span>
+</code></pre></div></p>
+<div class="admonition">
+<p class="admonition-title">出力結果はありません</p>
+</div>
+<p>コンテナ内のファイルを確認
+<div class="highlight"><pre><span></span><code>$ podman exec myapp cat /var/www/html/index.html
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman exec myapp cat /var/www/html/index.html</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman exec myapp cat /var/www/html/index.html
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Hello World&lt;/h1&gt;
+        &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+</details>
+<h3 id="_10">コンテナからイメージを作成</h3>
+<p>(このコンテンツは本書 2.1.9に該当します)</p>
+<p>コンテナを停止します
+<div class="highlight"><pre><span></span><code>$ podman stop myapp
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman stop myapp</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman stop myapp
+myapp
+</code></pre></div>
+</details>
+<p>コンテナをコミットします。これにより、起動中の<code>myapp</code>コンテナから<code>myimage</code>コンテナイメージが作成されます。
+<div class="highlight"><pre><span></span><code>$ podman commit myapp myimage
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman commit myapp myimage</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman commit myapp myimage
+Getting image source signatures
+Copying blob 48bbc3bb7b39 skipped: already exists  
+Copying blob ca07266b6575 skipped: already exists  
+Copying blob 2860cc774137 skipped: already exists  
+Copying blob 195affa04e51 done  
+Copying config 7af708ab2c done  
+Writing manifest to image destination
+Storing signatures
+7af708ab2cb1b896b2e6a946588a8607b1d02e1c4e7a0ac317fe6f205901e3c8
+</code></pre></div>
+</details>
+<p><code>myimage</code>コンテナイメージから<code>myapp1</code>コンテナを起動します
+<div class="highlight"><pre><span></span><code>$ podman run -d --name myapp1 -p 8080:8080 myimage
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman run -d --name myapp1 -p 8080:8080 myimage</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>podman run -d --name myapp1 -p 8080:8080 myimage
+41862b662bdeb01bd6c2a2dac2e8b1d337a275d28fce720ad4a738650ee3112f
+</code></pre></div>
+</details>
+<div class="admonition abstract">
+<p class="admonition-title">まとめ（2.1 コンテナの操作）</p>
+<p>このように...</p>
+</div>
+<h2 id="22">2.2 コンテナイメージの操作</h2>
+<h3 id="_11">コンテナとイメージの違い</h3>
+<p>(このコンテンツは本書 2.2.1に該当します)</p>
+<p><code>podman image tree</code>コマンドを実行します
+<div class="highlight"><pre><span></span><code>$ podman image tree myimage
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman image tree myimage</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>podman image tree myimage
+Image ID: 7af708ab2cb1
+Tags:     [localhost/myimage:latest]
+Size:     453.8MB
+Image Layers
+├── ID: 48bbc3bb7b39 Size: 214.8MB
+├── ID: c85189e46544 Size: 59.34MB
+├── ID: 129ebf0074a0 Size: 179.5MB Top Layer of: [registry.access.redhat.com/ubi8/httpd-24:latest]
+└── ID: eb3ca38cae75 Size:  51.2kB Top Layer of: [localhost/myimage:latest]
+</code></pre></div>
+</details>
+<p>2つのコンテナイメージを比較します。
+<code>myimage</code>コンテナイメージと元のコンテナイメージ(<code>ubi8/httpd-24</code>)との差分を表示します
+<div class="highlight"><pre><span></span><code>$ podman image diff myimage ubi8/httpd-24
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman image diff myimage ubi8/httpd-24</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="admonition info">
+<p class="admonition-title">実際にはコマンドの実行ごとに出力順が変化します</p>
+</div>
+<div class="highlight"><pre><span></span><code>$ podman image diff myimage ubi8/httpd-24
+C /opt
+C /opt/app-root
+C /opt/app-root/etc
+A /opt/app-root/etc/passwd
+C /etc
+C /etc/httpd
+C /etc/httpd/conf.d
+C /etc/httpd/conf.d/ssl.conf
+C /etc/httpd/conf
+C /etc/httpd/conf/httpd.conf
+C /etc/httpd/tls
+A /etc/httpd/tls/dhparams.pem
+A /etc/httpd/tls/localhost.crt
+A /etc/httpd/tls/localhost.key
+C /etc/group
+C /var
+C /var/www
+C /var/www/html
+A /var/www/html/index.html
+C /var/log
+C /var/log/httpd
+A /var/log/httpd/modsec_audit.log
+A /var/log/httpd/modsec_debug.log
+</code></pre></div>
+</details>
+<h3 id="_12">イメージのリスト表示</h3>
+<p>(このコンテンツは本書 2.2.2に該当します)</p>
+<p>イメージをリスト表示
+<div class="highlight"><pre><span></span><code>$ podman images
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman images</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code># podman images
+REPOSITORY                                TAG         IMAGE ID      CREATED        SIZE
+localhost/myimage                         latest      7af708ab2cb1  6 minutes ago  454 MB
+registry.access.redhat.com/ubi8/httpd-24  latest      c4127096ce64  2 weeks ago    454 MB
+</code></pre></div>
+</details>
+<h3 id="_13">イメージの調査</h3>
+<p>(このコンテンツは本書 2.2.3に該当します)</p>
+<p><code>podman image inspect</code>コマンドを使いコンテナイメージを詳細に調べることができます。
+<code>myimage</code>の調査を行います。
+<div class="highlight"><pre><span></span><code>$ podman image inspect myimage
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman image inspect myimage</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman image inspect myimage
+[
+     {
+          &quot;Id&quot;: &quot;7af708ab2cb1b896b2e6a946588a8607b1d02e1c4e7a0ac317fe6f205901e3c8&quot;,
+          &quot;Digest&quot;: &quot;sha256:2366a37f18bd462b09826a897f78fd3a523b57ba8d4330956dd0f2b0b7befe9a&quot;,
+          &quot;RepoTags&quot;: [
+               &quot;localhost/myimage:latest&quot;
+          ],
+          &quot;RepoDigests&quot;: [
+               &quot;localhost/myimage@sha256:2366a37f18bd462b09826a897f78fd3a523b57ba8d4330956dd0f2b0b7befe9a&quot;
+          ],
+...
+]
+</code></pre></div>
+</details>
+<p>出力をフィルタリングし、特定の情報だけを出力できます。
+<code>CMD</code>を出力します。
+<div class="highlight"><pre><span></span><code>$ podman image inspect --format &#39;{{ .Config.Cmd }}&#39; myimage
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman image inspect --format &#39;{{ .Config.Cmd }}&#39; myimage</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman image inspect --format &#39;{{ .Config.Cmd }}&#39; myimage
+[/usr/bin/run-httpd]
+</code></pre></div>
+</details>
+<p><code>StopSignal</code>を出力します
+<div class="highlight"><pre><span></span><code>$ podman image inspect --format &#39;{{ .Config.StopSignal }}&#39; myimage
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman image inspect --format &#39;{{ .Config.StopSignal }}&#39; myimage</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman image inspect --format &#39;{{ .Config.StopSignal }}&#39; myimage
+</code></pre></div>
+</details>
+<h3 id="_14">イメージのプッシュ</h3>
+<p>(このコンテンツは本書 2.2.4に該当します)</p>
+<p>コンテナトランスポート（単にトランスポートとも呼ぶ）
+<code>podman run</code>コマンドを実行時、トランスポートを指定してコンテナを実行します。
+<div class="highlight"><pre><span></span><code>$ podman run docker://registry.access.redhat.com/ubi8/httpd-24:latest echo hello
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman run docker://registry.access.redhat.com/ubi8/httpd-24:latest echo hello</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman run docker://registry.access.redhat.com/ubi8/httpd-24:latest echo hello
+hello
+</code></pre></div>
+</details>
+<p>トランスポートを省略してコマンドを実行します。デフォルトは<code>docker://</code>
+<div class="highlight"><pre><span></span><code>$ podman run registry.access.redhat.com/ubi8/httpd-24:latest echo hello
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman run registry.access.redhat.com/ubi8/httpd-24:latest echo hello</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman run registry.access.redhat.com/ubi8/httpd-24:latest echo hello
+hello
+</code></pre></div>
+</details>
+<p>コンテナイメージのリストを出力します
+<div class="highlight"><pre><span></span><code>$ podman images
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman images</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果*</summary>
+<div class="highlight"><pre><span></span><code>$ podman images
+REPOSITORY                                TAG         IMAGE ID      CREATED      SIZE
+registry.access.redhat.com/ubi8/httpd-24  latest      c4127096ce64  2 weeks ago  454 MB
+</code></pre></div>
+</details>
+<p><code>myimage</code>コンテナイメージをコンテナレジストリにプッシュします
+<div class="highlight"><pre><span></span><code>$ podman push myimage quay.io/rhatdan/myimage
+</code></pre></div></p>
+<p>出力結果*
+<div class="highlight"><pre><span></span><code>
+</code></pre></div></p>
+<h3 id="podman-login">podman login：コンテナレジストリへのログイン</h3>
+<p>(このコンテンツは本書 2.2.5に該当します)</p>
+<div class="admonition info">
+<p class="admonition-title">quay.ioとは</p>
+<p>quay.ioは、
+以降のquay.ioへのログインやコンテナイメージのpushを行うためにはご自身のアカウントの作成が必要です。
+Red Hatアカウントをお持ちの場合はそれを利用できます。</p>
+</div>
+<p><code>quay.io</code>にログインします
+<div class="highlight"><pre><span></span><code>$ podman login quay.io
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman login quay.io</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果*</summary>
+<div class="highlight"><pre><span></span><code>$ podman login quay.io
+Username: tnk4on
+Password: 
+Login Succeeded!
+</code></pre></div>
+</details>
+<p>ローカルにキャッシュされた認証情報の確認します。</p>
+<div class="admonition tip">
+<p class="admonition-title">注記</p>
+<p>キャッシュされた情報は暗号化されていないのでファイルの取り扱いには注意しましょう。</p>
+</div>
+<div class="highlight"><pre><span></span><code>$ cat /run/user/$UID/containers/auth.json
+</code></pre></div>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat /run/user/$UID/containers/auth.json</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果*</summary>
+<div class="highlight"><pre><span></span><code>$ cat /run/user/$UID/containers/auth.json
+{
+        &quot;auths&quot;: {
+                &quot;quay.io&quot;: {
+                        &quot;auth&quot;: &quot;xxxxxxxxxxxxxxxx&quot;
+                }
+        }
+}
+</code></pre></div>
+</details>
+<p><code>quay.io</code>からログアウトします
+<div class="highlight"><pre><span></span><code>$ podman logout quay.io
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ podman logout quay.io</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果*</summary>
+<div class="highlight"><pre><span></span><code>$ podman logout quay.io
+Removed login credentials for quay.io
+</code></pre></div>
+</details>
+<h3 id="_15">イメージのタグ付け</h3>
+<p>(このコンテンツは本書 2.2.6に該当します)</p>
+<p>コンテナイメージのリストを表示します
+<div class="highlight"><pre><span></span><code>$ podman images
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman images</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman images
+REPOSITORY                                TAG         IMAGE ID      CREATED      SIZE
+registry.access.redhat.com/ubi8/httpd-24  latest      c4127096ce64  2 weeks ago  454 MB
+</code></pre></div>
+</details>
+<p><code>podman tag</code>コマンドを使用してコンテナイメージに新しい名前（タグ）を追加できます。
+レジストリ(<code>quay.io</code>)、ユーザー名(<code>rhatdan</code>)を付加した新しいタグを作成します。
+<div class="highlight"><pre><span></span><code>$ podman tag myimage quay.io/rhatdan/myimage
+$ podman images
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman tag myimage quay.io/rhatdan/myimage</span>
+</code></pre></div>
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman images</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman tag myimage quay.io/rhatdan/myimage
+$ podman images
+REPOSITORY                                TAG         IMAGE ID      CREATED         SIZE
+localhost/myimage                         latest      c3c487bbbf7b  37 seconds ago  454 MB
+quay.io/rhatdan/myimage                   latest      c3c487bbbf7b  37 seconds ago  454 MB
+registry.access.redhat.com/ubi8/httpd-24  latest      c4127096ce64  2 weeks ago     454 MB
+</code></pre></div>
+</details>
+<p><code>quay.io</code>にユーザー名を指定してログインします*
+<div class="highlight"><pre><span></span><code>$ podman login --username rhatdan quay.io
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman login --username rhatdan quay.io</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果*</summary>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+</details>
+<p><code>quay.io</code>にイメージをプッシュします
+<div class="highlight"><pre><span></span><code>$ podman push quay.io/rhatdan/myimage
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman push quay.io/rhatdan/myimage</span>
+</code></pre></div></p>
+<div class="admonition">
+<p class="admonition-title">出力結果はありません</p>
+</div>
+<p><code>podman tag</code>でバージョンを指定したタグを作成します
+<div class="highlight"><pre><span></span><code>$ podman tag quay.io/rhatdan/myimage quay.io/rhatdan/myimage:1.0
+$ podman images
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ podman tag quay.io/rhatdan/myimage quay.io/rhatdan/myimage:1.0</span>
+</code></pre></div>
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman images</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman images
+REPOSITORY                                TAG         IMAGE ID      CREATED        SIZE
+localhost/myimage                         latest      c3c487bbbf7b  9 minutes ago  454 MB
+quay.io/rhatdan/myimage                   latest      c3c487bbbf7b  9 minutes ago  454 MB
+quay.io/rhatdan/myimage                   1.0         c3c487bbbf7b  9 minutes ago  454 MB
+registry.access.redhat.com/ubi8/httpd-24  latest      c4127096ce64  2 weeks ago    454 MB
+</code></pre></div>
+</details>
+<h3 id="_16">イメージの削除</h3>
+<p>(このコンテンツは本書 2.2.7に該当します)</p>
+<div class="admonition note">
+<p class="admonition-title">以前に<code>podman commit myapp myimage</code>で作成したコンテナイメージは<code>localhost/myimage</code>という名前で保存されています。</p>
+</div>
+<p><code>localhost/myimage</code>タグを削除します
+<div class="highlight"><pre><span></span><code>$ podman images
+$ podman rmi localhost/myimage
+$ podman images
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman images</span>
+</code></pre></div>
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman rmi localhost/myimage</span>
+</code></pre></div>
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman images</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman images
+REPOSITORY                                TAG         IMAGE ID      CREATED         SIZE
+localhost/myimage                         latest      c3c487bbbf7b  10 minutes ago  454 MB
+quay.io/rhatdan/myimage                   latest      c3c487bbbf7b  10 minutes ago  454 MB
+quay.io/rhatdan/myimage                   1.0         c3c487bbbf7b  10 minutes ago  454 MB
+registry.access.redhat.com/ubi8/httpd-24  latest      c4127096ce64  2 weeks ago     454 MB
+$ podman rmi localhost/myimage
+Untagged: localhost/myimage:latest
+$ podman images
+REPOSITORY                                TAG         IMAGE ID      CREATED         SIZE
+quay.io/rhatdan/myimage                   latest      c3c487bbbf7b  10 minutes ago  454 MB
+quay.io/rhatdan/myimage                   1.0         c3c487bbbf7b  10 minutes ago  454 MB
+registry.access.redhat.com/ubi8/httpd-24  latest      c4127096ce64  2 weeks ago     454 MB
+</code></pre></div>
+</details>
+<p><code>myimage</code>および<code>myimage:1.0</code>を削除します</p>
+<div class="admonition">
+<p class="admonition-title">訳注</p>
+<p>1章で実行したコンテナが残っている場合は、myimageの削除前に停止する必要があります。
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman rm -f -t 0 myapp1</span>
+</code></pre></div></p>
+</div>
+<div class="highlight"><pre><span></span><code>$ podman rmi myimage
+$ podman rmi myimage:1.0
+$ podman images
+</code></pre></div>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ podman rmi myimage</span>
+</code></pre></div>
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ podman rmi myimage:1.0</span>
+</code></pre></div>
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ podman images</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman rmi myimage
+Untagged: quay.io/rhatdan/myimage:latest
+$ podman rmi myimage:1.0
+Untagged: quay.io/rhatdan/myimage:1.0
+Deleted: c3c487bbbf7ba989432ae65facfac36ca34fbd75fde664b24cf6247bf844f955
+$ podman images
+REPOSITORY                                TAG         IMAGE ID      CREATED      SIZE
+registry.access.redhat.com/ubi8/httpd-24  latest      c4127096ce64  2 weeks ago  454 MB
+</code></pre></div>
+</details>
+<div class="admonition">
+<p class="admonition-title">コンテナイメージを削除する別の方法</p>
+<p>ID指定してコンテナイメージを削除することも可能です。</p>
+</div>
+<div class="highlight"><pre><span></span><code>$ podman rmi edc479f58484
+$ podman rmi edc479f58484 --force
+</code></pre></div>
+<p><code>podman image prune -a</code>コマンドを使用すると、起動中のコンテナで使われているコンテナイメージ以外を全て削除できます。
+ローカルにあるコンテナイメージを全て削除します。
+<div class="highlight"><pre><span></span><code>$ podman image prune -a
+$ podman images
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman image prune -a</span>
+</code></pre></div>
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman images</span>
+</code></pre></div></p>
+<p>参考
+<div class="highlight"><pre><span></span><code>$ podman rmi edc479f58484
+$ podman rmi edc479f58484 --force
+</code></pre></div></p>
+<p>全てのローカルイメージを削除する
+<div class="highlight"><pre><span></span><code>$ podman image prune -a
+$ podman images
+</code></pre></div></p>
+<p>出力結果
+<div class="highlight"><pre><span></span><code>$ podman image prune -a
+WARNING! This command removes all images without at least one container associated with them.
+Are you sure you want to continue? [y/N] y
+$ podman images
+</code></pre></div></p>
+<h3 id="_17">イメージのプル</h3>
+<p>(このコンテンツは本書 2.2.8に該当します)</p>
+<p><code>quay.io</code>から<code>myimage</code>コンテナイメージをプルする
+<div class="highlight"><pre><span></span><code>$ podman pull quay.io/rhatdan/myimage
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman pull quay.io/rhatdan/myimage</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman pull quay.io/rhatdan/myimage
+Trying to pull quay.io/rhatdan/myimage:latest...
+Getting image source signatures
+Copying blob e3460238f8a1 done  
+Copying blob c7765172d3ce done  
+Copying blob dfd8c625d022 done  
+Copying blob 2b782a9ad894 done  
+Copying blob a1eadb69adf1 done  
+Copying config 2c7e43d880 done  
+Writing manifest to image destination
+Storing signatures
+2c7e43d880382561ebae3fa06c7a1442d0da2912786d09ea9baaef87f73c29ae
+</code></pre></div>
+</details>
+<p>Original
+<div class="highlight"><pre><span></span><code>$ podman run -d -p 8080:8080 --name myapp registry.access.redhat.com/ubi8/httpd-24
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman run -d -p 8080:8080 --name myapp registry.access.redhat.com/ubi8/httpd-24</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman run -d -p 8080:8080 --name myapp registry.access.redhat.com/ubi8/httpd-24
+Trying to pull registry.access.redhat.com/ubi8/httpd-24:latest...
+Getting image source signatures
+Checking if image destination supports signatures
+Copying blob 9ece777c9660 done  
+Copying blob 70de3d8fc2c6 done  
+Copying blob b653248f5bcb done  
+Copying config c4127096ce done  
+Writing manifest to image destination
+Storing signatures
+a68b01256feb009ba382174831f67a8f78af61024abe809c50d1ce6ae6f84131
+</code></pre></div>
+</details>
+<p>コンテナイメージのリストを表示します
+<div class="highlight"><pre><span></span><code>$ podman images
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman images</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman images
+REPOSITORY                                TAG         IMAGE ID      CREATED      SIZE
+registry.access.redhat.com/ubi8/httpd-24  latest      c4127096ce64  2 weeks ago  454 MB
+quay.io/rhatdan/myimage                   latest      2c7e43d88038  2 years ago  462 MB
+</code></pre></div>
+</details>
+<p>Dockerはdocker.ioをハードコード
+Podmanでは複数のレジストリが定義されている。パッケージングにより異なる。</p>
+<p>Podmanの情報を出力
+<div class="highlight"><pre><span></span><code>$ podman info
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman info</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman info
+...
+registries:
+  search:
+  - registry.access.redhat.com
+  - registry.redhat.io
+  - docker.io
+...
+</code></pre></div>
+</details>
+<p><code>podman create</code>コマンドを使うと、コンテナイメージからコンテナが作成されますがすぐには実行されません。
+停止状態のコンテナを起動するには<code>podman start</code>コマンドを使用します。</p>
+<p>短縮名でコンテナイメージを指定し、コンテナを作成します
+<div class="highlight"><pre><span></span><code>$ podman create -p 8080:8080 ubi8/httpd-24
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman create -p 8080:8080 ubi8/httpd-24</span>
+</code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">注記</p>
+<p>RHELの場合*
+<div class="highlight"><pre><span></span><code>$ podman create -p 8080:8080 ubi8/httpd-24
+Resolved &quot;ubi8/httpd-24&quot; as an alias (/etc/containers/registries.conf.d/001-rhel-shortnames.conf)
+Trying to pull registry.access.redhat.com/ubi8/httpd-24:latest...
+Getting image source signatures
+Checking if image destination supports signatures
+Copying blob 9ece777c9660 done  
+Copying blob 70de3d8fc2c6 done  
+Copying blob b653248f5bcb done  
+Copying config c4127096ce done  
+Writing manifest to image destination
+Storing signatures
+94ad6a37b8fb40b13eb7038e5e174cc22bdd3fe8237a6fbd6a14bd87896528f8
+</code></pre></div>
+- <code>"ubi8" = "registry.access.redhat.com/ubi8"</code> があるため解決してしまう</p>
+<p>短縮名を設定しているファイルの内容を確認してみる
+<div class="highlight"><pre><span></span><code>$ cat /etc/containers/registries.conf.d/000-shortnames.conf
+</code></pre></div>
+出力結果
+<div class="highlight"><pre><span></span><code>$ cat /etc/containers/registries.conf.d/000-shortnames.conf
+[aliases]
+...
+  # centos
+  &quot;centos&quot; = &quot;quay.io/centos/centos&quot;
+  # containers
+  &quot;skopeo&quot; = &quot;quay.io/skopeo/stable&quot;
+  &quot;buildah&quot; = &quot;quay.io/buildah/stable&quot;
+  &quot;podman&quot; = &quot;quay.io/podman/stable&quot;
+...
+</code></pre></div></p>
+</div>
+<h3 id="_18">イメージの検索</h3>
+<p>(このコンテンツは本書 2.2.9に該当します)</p>
+<p>リポジトリregistry.access.redhat.comで、名前にhttpdという文字列を含むイメージを検索します
+<div class="highlight"><pre><span></span><code>$ podman search registry.access.redhat.com/httpd
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman search registry.access.redhat.com/httpd</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman search registry.access.redhat.com/httpd
+NAME                                                                         DESCRIPTION
+registry.access.redhat.com/rhscl/httpd-24-rhel7                              Apache HTTP 2.4 Server
+registry.access.redhat.com/ubi8/httpd-24                                     Platform for running Apache httpd 2.4 or bui...
+registry.access.redhat.com/ubi9/httpd-24                                     rhcc_registry.access.redhat.com_ubi9/httpd-2...
+registry.access.redhat.com/cloudforms46-beta/cfme-openshift-httpd            CloudForms is a management and automation pl...
+registry.access.redhat.com/cloudforms46/cfme-openshift-httpd                 Web Server image for a multi-pod Red Hat® C...
+...
+</code></pre></div>
+</details>
+<h3 id="_19">イメージのマウント</h3>
+<p>(このコンテンツは本書 2.2.10に該当します)</p>
+<p><code>podman mount</code>を実行する。そのままではエラーになる。
+<div class="highlight"><pre><span></span><code>$ podman mount quay.io/rhatdan/myimage
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman mount quay.io/rhatdan/myimage</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman mount quay.io/rhatdan/myimage
+Error: cannot run command &quot;podman mount&quot; in rootless mode, must execute `podman unshare` first
+</code></pre></div>
+</details>
+<p><code>podman unshare</code>を実行します（ローカルにイメージが無い場合は<code>podman pull quay.io/rhatdan/myimage</code>を事前に実行します）
+<code>podman unsahre</code>を実行するとプロンプトが<code>$</code>から<code>#</code>に変化します。
+<div class="highlight"><pre><span></span><code>$ podman unshare
+# mnt=$(podman image mount quay.io/rhatdan/myimage)
+# cat $mnt/var/www/html/index.html
+# podman image unmount quay.io/rhatdan/myimage
+# exit
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman unshare</span>
+</code></pre></div>
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">mnt=$(podman image mount quay.io/rhatdan/myimage)</span>
+</code></pre></div>
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat $mnt/var/www/html/index.html</span>
+</code></pre></div>
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman image unmount quay.io/rhatdan/myimage</span>
+</code></pre></div>
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">exit</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman unshare
+# mnt=$(podman image mount quay.io/rhatdan/myimage)
+# cat $mnt/var/www/html/index.html
+&lt;html&gt;
+ &lt;head&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+   &lt;h1&gt;Hello World&lt;h1&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+# podman image unmount quay.io/rhatdan/myimage
+2c7e43d880382561ebae3fa06c7a1442d0da2912786d09ea9baaef87f73c29ae
+# exit
+exit
+</code></pre></div>
+</details>
+<div class="admonition question">
+<p class="admonition-title">（オプション）<code>podman image</code>コマンドの他のサブコマンドの詳細はマニュアルページを参照してください</p>
+<div class="highlight"><pre><span></span><code>$ man podman-image
+</code></pre></div>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">まとめ（2.2 コンテナイメージの操作）</p>
+<p>コンテナ実行の元となるコンテナイメージは、コンテナレジストリから入手するだけでなく、名前やタグを付けたものをコンテナレジストリにプッシュできます。
+Dockerには無いPodman独自のコマンドとして、<code>podman image mount</code>や<code>podman unshare</code>があります。これらのコマンドを使用することでより安全にコンテナイメージの中を調査することができます。</p>
+</div>
+<h2 id="23">2.3　イメージの構築</h2>
+<h3 id="containerfiledockerfile">ContainerfileまたはDockerfileのフォーマット</h3>
+<p>(このコンテンツは本書 2.3.1に該当します)</p>
+<p>Containerfileのサンプル
+<div class="highlight"><pre><span></span><code>
+</code></pre></div></p>
+<h3 id="_20">アプリケーションのビルドの自動化</h3>
+<p>(このコンテンツは本書 2.3.2に該当します)</p>
+<p>myappディレクトリを作成し、その中にindex.htmlとContainerfileを作成します
+<div class="highlight"><pre><span></span><code>$ mkdir myapp
+$ cat &gt; myapp/index.html &lt;&lt; _EOF
+&lt;html&gt;
+ &lt;head&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+ &lt;h1&gt;Hello World&lt;/h1&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+_EOF
+$ cat &gt; myapp/Containerfile &lt;&lt; _EOF
+FROM ubi8/httpd-24
+COPY index.html /var/www/html/index.html
+_EOF
+</code></pre></div></p>
+<p>出力結果
+<div class="highlight"><pre><span></span><code>$ mkdir myapp
+$ cat &gt; myapp/index.html &lt;&lt; _EOF
+&lt;html&gt;
+ &lt;head&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+ &lt;h1&gt;Hello World&lt;/h1&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+_EOF
+$ cat &gt; myapp/Containerfile &lt;&lt; _EOF
+FROM ubi8/httpd-24
+COPY index.html /var/www/html/index.html
+_EOF
+</code></pre></div></p>
+<p>コンテナイメージをビルドします
+<div class="highlight"><pre><span></span><code>$ podman build -t quay.io/rhatdan/myimage ./myapp
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">podman build -t quay.io/rhatdan/myimage ./myapp</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman build -t quay.io/rhatdan/myimage ./myapp
+STEP 1/2: FROM ubi8/httpd-24
+STEP 2/2: COPY index.html /var/www/html/index.html
+COMMIT quay.io/rhatdan/myimage
+--&gt; 1992ba61ae6
+Successfully tagged quay.io/rhatdan/myimage:latest
+1992ba61ae60d779d865e7de510601d52184f12b25187f6b8c02318ccc240f6b
+</code></pre></div>
+</details>
+<p>コンテナイメージをビルドし、レジストリにプッシュするスクリプトを作成します</p>
+<div class="admonition">
+<p>このシェルスクリプトはコンテナのビルドとプッシュを簡単に自動化するための一例です。
+ここではスクリプトの実行は行いませんが、試してみたい方はご自身の<code>quay.io</code>アカウントを用意してお試しください。</p>
+</div>
+<div class="highlight"><pre><span></span><code>$ cat &gt; myapp/automate.sh &lt;&lt; _EOF
+#!/bin/bash
+podman build -t quay.io/rhatdan/myimage ./myapp
+podman push quay.io/rhatdan/myimage
+_EOF
+$ chmod +x myapp/automate.sh
+</code></pre></div>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat &gt; myapp/automate.sh &lt;&lt; _EOF</span>
+<span class="l l-Scalar l-Scalar-Plain">#!/bin/bash</span>
+<span class="l l-Scalar l-Scalar-Plain">podman build -t quay.io/rhatdan/myimage ./myapp</span>
+<span class="l l-Scalar l-Scalar-Plain">podman push quay.io/rhatdan/myimage</span>
+<span class="l l-Scalar l-Scalar-Plain">_EOF</span>
+</code></pre></div>
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">chmod +x myapp/automate.sh</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>cat &gt; myapp/automate.sh &lt;&lt; _EOF
+#!/bin/bash
+podman build -t quay.io/rhatdan/myimage ./myapp
+podman push quay.io/rhatdan/myimage
+_EOF
+$ chmod +x myapp/automate.sh
+</code></pre></div>
+</details>
+<p>コンテナイメージのリストを出力する
+<div class="highlight"><pre><span></span><code>$ podman images
+</code></pre></div></p>
+<p>(コピペ用)
+<div class="copy highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ podman images</span>
+</code></pre></div></p>
+<details class="success">
+<summary>出力結果</summary>
+<div class="highlight"><pre><span></span><code>$ podman images
+REPOSITORY                                TAG         IMAGE ID      CREATED        SIZE
+quay.io/rhatdan/myimage                   latest      1992ba61ae60  4 minutes ago  454 MB
+registry.access.redhat.com/ubi8/httpd-24  latest      c4127096ce64  2 weeks ago    454 MB
+&lt;none&gt;                                    &lt;none&gt;      2c7e43d88038  2 years ago    462 MB
+</code></pre></div>
+</details>
+<div class="admonition">
+<p class="admonition-title">danglingイメージ</p>
+<p>あああ</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">まとめ</p>
+<p>このように...</p>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../getting-started/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 開始方法">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                開始方法
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../chapter3/" class="md-footer__link md-footer__link--next" aria-label="Next: Chapter 3">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Chapter 3
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/tnk4on" target="_blank" rel="noopener" title="tnk4on on x" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/tnk4on/podman-handson" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer", "navigation.sections"], "search": "../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.726fbb30.min.js"></script>
+      
+    
+  </body>
+</html>
